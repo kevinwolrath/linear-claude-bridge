@@ -1,0 +1,16 @@
+services:
+  bridge:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    volumes:
+      - bridge-data:/data
+      # Add local repository mounts on .45 as routing is configured, for example:
+      # - C:/dev-env/quest-forge:/repos/quest-forge
+      # - C:/dev-env/dinosaur-duel:/repos/dinosaur-duel
+
+volumes:
+  bridge-data:
